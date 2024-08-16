@@ -2,7 +2,21 @@
     include "./connect/connect.php";
 
     if(isset($_POST['btn'])){
-        echo "adasdasdas";
+        $id ="";
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $level = 2;
+
+        // SQL
+        $sql = "INSERT INTO menber (id, username, password, level) 
+        VALUES ('$id', '$username', '$password', '$level')
+        ";
+        // hàm chạy
+        mysqli_query($conn, $sql);
+
+        // dang ky xg chuyen ve tran login
+        header("location: login.php");
+        exit();
     }
 ?>
 
@@ -25,13 +39,13 @@
     <form action="register.php" method="post">
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline mb-4">
-            <input type="text" id="form3Example3" class="form-control" />
+            <input type="text" id="form3Example3" name="username" class="form-control" />
             <label class="form-label" for="form3Example3">Username</label>
         </div>
 
         <!-- Password input -->
         <div data-mdb-input-init class="form-outline mb-4">
-            <input type="password" id="form3Example4" class="form-control" />
+            <input type="password" id="form3Example4" name="password" class="form-control" />
             <label class="form-label" for="form3Example4">Password</label>
         </div>
 
